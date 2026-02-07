@@ -110,6 +110,7 @@ class _SigninscreenState extends State<Signinscreen> {
         key: "role",
         value: loginResponse.data?.role.toString() ?? "",
       );
+      String token = PreferenceManager.getStringValue(key: "token")??"";
       CustomNavigator.pushAndRemoveUntil(
         context: context,
         screen: BottomBar(),

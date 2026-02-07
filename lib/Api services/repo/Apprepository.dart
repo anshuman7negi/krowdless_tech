@@ -61,4 +61,29 @@ class AppRepository {
     }
   }
 
+  Future<ResponseStatus> getProfile(String token) async {
+    try {
+      final response = await ApiService(token: token).sendRequest.post(
+        SIGNUP,
+      );
+      return ResponseStatus(
+        statusCode: response.statusCode,
+        responseData: SignUpResponse.fromJson(response.data),
+      );
+    } on DioException catch (e) {
+      print(e.toString());
+      print("error");
+      throw ErrorStatus(
+        message: e.response!.data['message'],
+        code: e.response!.statusCode,
+      );
+    } on Exception catch (e) {
+      print(e.toString());
+      print("error");
+      rethrow;
+    }
+  }
+
+
+
 }

@@ -18,6 +18,10 @@ enum AppStatus {
   signUpLoading,
   signUpError,
 
+  profileSuccess,
+  profileLoading,
+  profileError,
+
   verifyOtpSuccess,
   verifyOtpLoading,
   verifyOtpError,
